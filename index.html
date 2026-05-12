@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nazmul Alam | Android Developer</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans selection:bg-blue-100" x-data="{ mobileMenu: false }">
+
+    <!-- Welcome Splash Screen -->
+<div 
+    x-data="{ loading: true }" 
+    x-init="setTimeout(() => loading = false, 2500)" 
+    x-show="loading" 
+    x-transition:leave="transition ease-in duration-700"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-900 text-white"
+>
+    <!-- Animated Logo/Icon -->
+    <div class="relative">
+        <div class="absolute -inset-4 bg-blue-600 rounded-full blur opacity-20 animate-pulse"></div>
+        <i class="fa-solid fa-code text-5xl text-blue-500 mb-4 relative"></i>
+    </div>
+    
+    <h1 class="text-2xl font-bold tracking-widest mt-4">
+        NAZMUL<span class="text-blue-500">.DEV</span>
+    </h1>
+    
+    <!-- Progress Bar Animation -->
+    <div class="w-48 h-1 bg-slate-800 rounded-full mt-6 overflow-hidden">
+        <div class="h-full bg-blue-500 loading-bar"></div>
+    </div>
+    
+    <p class="text-slate-500 text-xs mt-4 uppercase tracking-[0.3em]">Initializing Portfolio</p>
+</div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="text-xl font-bold tracking-tight text-blue-600">NAZMUL.DEV</div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 font-medium text-slate-600">
+                    <a href="#about" class="hover:text-blue-600 transition">About</a>
+                    <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
+                    <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
+                    <a href="#contact" class="hover:text-blue-600 transition text-blue-600 border border-blue-600 px-4 py-1 rounded-full hover:bg-blue-50">Hire Me</a>
+                </div>
+
+                <!-- Mobile Button -->
+                <div class="md:hidden">
+                    <button @click="mobileMenu = !mobileMenu" class="text-slate-600">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenu" x-cloak class="md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-2">
+            <a href="#about" class="block py-2 text-slate-600">About</a>
+            <a href="#skills" class="block py-2 text-slate-600">Skills</a>
+            <a href="#projects" class="block py-2 text-slate-600">Projects</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="py-20 bg-white" id="about">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+            <div class="md:w-2/3">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6">Hi, I'm <span class="gradient-text">Nazmul Alam</span></h1>
+                <p class="text-xl text-slate-600 mb-8 max-w-2xl leading-relaxed">
+                    Enthusiastic **Android Developer** with a solid foundation in Kotlin and Jetpack Compose. I build robust, user-centric mobile applications using MVVM and Clean Architecture.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="mailto:neloymac24@gmail.com" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-blue-200 hover:bg-blue-700 transition">Get In Touch</a>
+                    <a href="https://github.com/Neloy007" target="_blank" class="bg-slate-800 text-white px-8 py-3 rounded-lg font-bold hover:bg-slate-900 transition"><i class="fa-brands fa-github mr-2"></i> GitHub</a>
+                </div>
+            </div>
+            <div class="md:w-1/3 mt-12 md:mt-0 flex justify-center">
+                <div class="w-64 h-64 bg-blue-100 rounded-full flex items-center justify-center border-4 border-white shadow-xl overflow-hidden">
+                    <img src="Nazmul_Formal.jpeg" alt="Nazmul Alam" class="w-full h-full object-cover">                
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Skills Section -->
+<section class="py-20 bg-slate-50" id="skills">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">Technical Arsenal</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" x-data="{ 
+            categories: [
+                { 
+                    title: 'Languages', 
+                    skills: ['Kotlin (Proficient)', 'Java (Basic)'],
+                    icon: 'fa-terminal' 
+                },
+                { 
+                    title: 'Android UI', 
+                    skills: ['Jetpack Compose', 'XML Layouts', 'Material Design'],
+                    icon: 'fa-android' 
+                },
+                { 
+                    title: 'Architecture', 
+                    skills: ['MVVM', 'Clean Architecture', 'Repository Pattern'],
+                    icon: 'fa-layer-group' 
+                },
+                { 
+                    title: 'Storage & API', 
+                    skills: ['Room DB', 'Retrofit / Ktor', 'Firebase / Supabase'],
+                    icon: 'fa-cloud-arrow-down' 
+                }
+            ] 
+        }">
+            <template x-for="cat in categories">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-500 transition-all duration-300 group">
+                    <!-- Specific Skill Icon -->
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <i :class="'fa-solid ' + cat.icon + ' text-2xl'"></i>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-4 text-slate-800" x-text="cat.title"></h3>
+                    
+                    <ul class="space-y-3">
+                        <template x-for="skill in cat.skills">
+                            <li class="flex items-center text-slate-600 text-sm">
+                                <i class="fa-solid fa-circle-check text-blue-400 mr-2 text-xs"></i>
+                                <span x-text="skill"></span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </div>
+    </div>
+</section>
+
+    <!-- Projects Section -->
+    <section class="py-20 bg-white" id="projects">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12">Featured Projects</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+
+
+
+                <!-- Project 1 -->
+<a href="exam-taker.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
+    <div class="h-48 bg-blue-600 flex items-center justify-center p-6 text-white overflow-hidden relative">
+        <i class="fa-solid fa-graduation-cap text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
+        <span class="italic font-bold relative tracking-wide">Exam Taker Ecosystem</span>
+    </div>
+    
+    <div class="p-6">
+        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Exam Taker Ecosystem</h3>
+        <p class="text-slate-600 text-sm mb-4 leading-relaxed">Dual-platform system with student mobile app and web admin dashboard. Real-time Firebase sync.</p>
+        <div class="flex gap-2">
+            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium">Jetpack Compose</span>
+            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium text-amber-600">Firebase</span>
+        </div>
+    </div>
+</a>
+
+
+                <!-- Project 2: Online Shop Management -->
+<a href="shop-system.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
+    <div class="h-48 bg-slate-800 flex items-center justify-center p-6 text-white overflow-hidden relative">
+        <i class="fa-solid fa-cart-shopping text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
+        <span class="italic font-bold relative">Online Shop System</span>
+    </div>
+    <div class="p-6">
+        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Online Shop Management</h3>
+        <p class="text-slate-600 text-sm mb-4">MVVM 4-layer architecture retail tool focusing on local data persistence and Material Design.</p>
+        <div class="flex gap-2">
+            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">Room DB</span>
+            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">MVVM</span>
+        </div>
+    </div>
+</a>
+
+<!-- Project 3: Cleaners App -->
+<a href="cleaners-app.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
+    <div class="h-48 bg-blue-400 flex items-center justify-center p-6 text-white overflow-hidden relative">
+        <i class="fa-solid fa-broom text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
+        <span class="italic font-bold relative">Cleaners App</span>
+    </div>
+    <div class="p-6">
+        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Cleaners App</h3>
+        <p class="text-slate-600 text-sm mb-4">Service tracking app utilizing Supabase for optimized image storage and Firebase Auth.</p>
+        <div class="flex gap-2">
+            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">Supabase</span>
+            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium text-blue-500">Kotlin</span>
+        </div>
+    </div>
+</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Contact -->
+    <section class="py-20 bg-slate-900 text-white" id="contact">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-3xl font-bold mb-8">Education</h2>
+                <div class="space-y-6">
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-blue-400 font-bold">2024 (Appeared)</p>
+                        <h4 class="font-bold text-lg">B.Sc. in CSE</h4>
+                        <p class="text-slate-400">Current CGPA: 3.55 | National University (Ideal College)</p>
+                    </div>
+                    <div class="border-l-2 border-slate-600 pl-4">
+                        <p class="text-slate-400 font-bold">2020</p>
+                        <h4 class="font-bold text-lg">Higher Secondary Certificate</h4>
+                        <p class="text-slate-400">GPA: 4.50 | Bajitpur Govt. College</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold mb-8">Contact Info</h2>
+                <ul class="space-y-4 text-lg">
+                    <li><i class="fa-solid fa-envelope text-blue-400 mr-4 w-6"></i> neloymac24@gmail.com</li>
+                    <li><i class="fa-solid fa-phone text-blue-400 mr-4 w-6"></i> 01568346525</li>
+                    <li><i class="fa-solid fa-location-dot text-blue-400 mr-4 w-6"></i> Dhanmondi, Dhaka</li>
+                </ul>
+                <div class="mt-8 p-6 bg-slate-800 rounded-xl">
+                    <p class="italic text-slate-300">"Thanks for the overlook"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-slate-900 border-t border-slate-800 text-center text-slate-500 text-sm">
+        &copy; 2026 Nazmul Alam. All rights reserved.
+
+</body>
+</html>
