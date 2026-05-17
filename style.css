@@ -106,3 +106,42 @@ html {
 #skills .group:hover li {
     color: #1e293b; /* Darker text on hover */
 }
+
+
+.counter {
+    transition: all 0.4s ease;
+}
+
+.stat-card {
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.live-card {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.35);
+    transform: translateY(-4px);
+}
+
+/* Pulse animation */
+.pulse-icon {
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.12);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

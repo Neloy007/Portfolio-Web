@@ -78,7 +78,7 @@
             <div class="md:w-2/3">
                 <h1 class="text-5xl md:text-7xl font-extrabold mb-6">Hi, I'm <span class="gradient-text">Nazmul Alam</span></h1>
                 <p class="text-xl text-slate-600 mb-8 max-w-2xl leading-relaxed">
-                    Enthusiastic **Android Developer** with a solid foundation in Kotlin and Jetpack Compose. I build robust, user-centric mobile applications using MVVM and Clean Architecture.
+                    Android Developer with a solid foundation in Kotlin and Jetpack Compose. I build robust, user-centric mobile applications with Clean Architecture.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="mailto:neloymac24@gmail.com" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-blue-200 hover:bg-blue-700 transition">Get In Touch</a>
@@ -92,58 +92,122 @@
             </div>
         </div>
     </header>
+    <!-- Animated Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+
+                <!-- Stat 1 -->
+                <div class="stat-card bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
+
+                    <!-- Icon -->
+                    <div class="mb-4">
+                        <i class="fa-solid fa-chart-line text-3xl text-blue-500 pulse-icon"></i>
+                    </div>
+
+                    <!-- Animated Number -->
+                    <h2 class="text-5xl font-extrabold text-blue-600 counter" data-target="10">
+                        0
+                    </h2>
+
+                    <!-- Dynamic Label -->
+                    <p class="dynamic-label mt-3 text-slate-600 font-medium tracking-wide">
+                        Projects Completed
+                    </p>
+
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="stat-card bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
+
+                    <div class="mb-4">
+                        <i class="fa-solid fa-layer-group text-3xl text-blue-500 pulse-icon"></i>
+                    </div>
+
+                        <h2 class="text-5xl font-extrabold text-blue-600 counter" data-target="3">
+                        0
+                        </h2>
+
+                    <p class="dynamic-label mt-3 text-slate-600 font-medium tracking-wide">
+                        Architectures Used
+                    </p>
+
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="stat-card bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
+
+                    <div class="mb-4">
+                        <i class="fa-solid fa-code text-3xl text-blue-500 pulse-icon"></i>
+                    </div>
+
+                    <h2 class="text-5xl font-extrabold text-blue-600 counter" data-target="2">
+                        0
+                    </h2>
+
+                    <p class="dynamic-label mt-3 text-slate-600 font-medium tracking-wide">
+                        Years Learning
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
 
     <!-- Skills Section -->
-<section class="py-20 bg-slate-50" id="skills">
-    <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-12 text-center">Technical Arsenal</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" x-data="{ 
-            categories: [
-                { 
-                    title: 'Languages', 
-                    skills: ['Kotlin (Proficient)', 'Java (Basic)'],
-                    icon: 'fa-terminal' 
-                },
-                { 
-                    title: 'Android UI', 
-                    skills: ['Jetpack Compose', 'XML Layouts', 'Material Design'],
-                    icon: 'fa-android' 
-                },
-                { 
-                    title: 'Architecture', 
-                    skills: ['MVVM', 'Clean Architecture', 'Repository Pattern'],
-                    icon: 'fa-layer-group' 
-                },
-                { 
-                    title: 'Storage & API', 
-                    skills: ['Room DB', 'Retrofit / Ktor', 'Firebase / Supabase'],
-                    icon: 'fa-cloud-arrow-down' 
-                }
-            ] 
-        }">
-            <template x-for="cat in categories">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-500 transition-all duration-300 group">
-                    <!-- Specific Skill Icon -->
-                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                        <i :class="'fa-solid ' + cat.icon + ' text-2xl'"></i>
+    <section class="py-20 bg-slate-50" id="skills">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Technical Arsenal</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" x-data="{ 
+                categories: [
+                    { 
+                        title: 'Languages', 
+                        skills: ['Kotlin (Proficient)', 'Java (Basic)'],
+                        icon: 'fa-terminal' 
+                    },
+                    { 
+                        title: 'Android UI', 
+                        skills: ['Jetpack Compose', 'XML Layouts', 'Material Design'],
+                        icon: 'fa-android' 
+                    },
+                    { 
+                        title: 'Architecture', 
+                        skills: ['MVVM', 'Clean Architecture', 'Repository Pattern'],
+                        icon: 'fa-layer-group' 
+                    },
+                    { 
+                        title: 'Storage & API', 
+                        skills: ['Room DB', 'Retrofit / Ktor', 'Firebase / Supabase'],
+                        icon: 'fa-cloud-arrow-down' 
+                    }
+                ] 
+            }">
+                <template x-for="cat in categories">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-500 transition-all duration-300 group">
+                        <!-- Specific Skill Icon -->
+                        <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                            <i :class="'fa-solid ' + cat.icon + ' text-2xl'"></i>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold mb-4 text-slate-800" x-text="cat.title"></h3>
+                        
+                        <ul class="space-y-3">
+                            <template x-for="skill in cat.skills">
+                                <li class="flex items-center text-slate-600 text-sm">
+                                    <i class="fa-solid fa-circle-check text-blue-400 mr-2 text-xs"></i>
+                                    <span x-text="skill"></span>
+                                </li>
+                            </template>
+                        </ul>
                     </div>
-                    
-                    <h3 class="text-xl font-bold mb-4 text-slate-800" x-text="cat.title"></h3>
-                    
-                    <ul class="space-y-3">
-                        <template x-for="skill in cat.skills">
-                            <li class="flex items-center text-slate-600 text-sm">
-                                <i class="fa-solid fa-circle-check text-blue-400 mr-2 text-xs"></i>
-                                <span x-text="skill"></span>
-                            </li>
-                        </template>
-                    </ul>
-                </div>
-            </template>
+                </template>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Projects Section -->
     <section class="py-20 bg-white" id="projects">
@@ -154,54 +218,54 @@
 
 
                 <!-- Project 1 -->
-<a href="exam-taker.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
-    <div class="h-48 bg-blue-600 flex items-center justify-center p-6 text-white overflow-hidden relative">
-        <i class="fa-solid fa-graduation-cap text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
-        <span class="italic font-bold relative tracking-wide">Exam Taker Ecosystem</span>
-    </div>
-    
-    <div class="p-6">
-        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Exam Taker Ecosystem</h3>
-        <p class="text-slate-600 text-sm mb-4 leading-relaxed">Dual-platform system with student mobile app and web admin dashboard. Real-time Firebase sync.</p>
-        <div class="flex gap-2">
-            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium">Jetpack Compose</span>
-            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium text-amber-600">Firebase</span>
-        </div>
-    </div>
-</a>
+            <a href="exam-taker.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
+                <div class="h-48 bg-blue-600 flex items-center justify-center p-6 text-white overflow-hidden relative">
+                    <i class="fa-solid fa-graduation-cap text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
+                    <span class="italic font-bold relative tracking-wide">Exam Taker Ecosystem</span>
+                </div>
+                
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Exam Taker Ecosystem</h3>
+                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Dual-platform system with student mobile app and web admin dashboard. Real-time Firebase sync.</p>
+                    <div class="flex gap-2">
+                        <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium">Jetpack Compose</span>
+                        <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium text-amber-600">Firebase</span>
+                    </div>
+                </div>
+            </a>
 
 
                 <!-- Project 2: Online Shop Management -->
-<a href="shop-system.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
-    <div class="h-48 bg-slate-800 flex items-center justify-center p-6 text-white overflow-hidden relative">
-        <i class="fa-solid fa-cart-shopping text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
-        <span class="italic font-bold relative">Online Shop System</span>
-    </div>
-    <div class="p-6">
-        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Online Shop Management</h3>
-        <p class="text-slate-600 text-sm mb-4">MVVM 4-layer architecture retail tool focusing on local data persistence and Material Design.</p>
-        <div class="flex gap-2">
-            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">Room DB</span>
-            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">MVVM</span>
-        </div>
-    </div>
-</a>
+        <a href="shop-system.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
+            <div class="h-48 bg-slate-800 flex items-center justify-center p-6 text-white overflow-hidden relative">
+                <i class="fa-solid fa-cart-shopping text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
+                <span class="italic font-bold relative">Online Shop System</span>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Online Shop Management</h3>
+                <p class="text-slate-600 text-sm mb-4">MVVM 4-layer architecture retail tool focusing on local data persistence and Material Design.</p>
+                <div class="flex gap-2">
+                    <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">Room DB</span>
+                    <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">MVVM</span>
+                </div>
+            </div>
+        </a>
 
-<!-- Project 3: Cleaners App -->
-<a href="cleaners-app.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
-    <div class="h-48 bg-blue-400 flex items-center justify-center p-6 text-white overflow-hidden relative">
-        <i class="fa-solid fa-broom text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
-        <span class="italic font-bold relative">Cleaners App</span>
-    </div>
-    <div class="p-6">
-        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Cleaners App</h3>
-        <p class="text-slate-600 text-sm mb-4">Service tracking app utilizing Supabase for optimized image storage and Firebase Auth.</p>
-        <div class="flex gap-2">
-            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">Supabase</span>
-            <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium text-blue-500">Kotlin</span>
-        </div>
-    </div>
-</a>
+        <!-- Project 3: Cleaners App -->
+        <a href="cleaners-app.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
+            <div class="h-48 bg-blue-400 flex items-center justify-center p-6 text-white overflow-hidden relative">
+                <i class="fa-solid fa-broom text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
+                <span class="italic font-bold relative">Cleaners App</span>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Cleaners App</h3>
+                <p class="text-slate-600 text-sm mb-4">Service tracking app utilizing Supabase for optimized image storage and Firebase Auth.</p>
+                <div class="flex gap-2">
+                    <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">Supabase</span>
+                    <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium text-blue-500">Kotlin</span>
+                </div>
+            </div>
+        </a>
             </div>
         </div>
     </section>
@@ -231,15 +295,28 @@
                     <li><i class="fa-solid fa-phone text-blue-400 mr-4 w-6"></i> 01568346525</li>
                     <li><i class="fa-solid fa-location-dot text-blue-400 mr-4 w-6"></i> Dhanmondi, Dhaka</li>
                 </ul>
-                <div class="mt-8 p-6 bg-slate-800 rounded-xl">
-                    <p class="italic text-slate-300">"Thanks for the overlook"</p>
+                <div class="mt-8 p-3 bg-slate-800 rounded-2xl border border-slate-700 shadow-lg">
+                    <h3 class="text-white text-sm font-mono mb-4">
+                        ⚲ My Location
+                    </h3>
+
+                    <iframe
+                        class="w-full h-15 rounded-xl"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps?q=Dhanmondi+4A,+Dhaka,+Bangladesh&output=embed">
+                    </iframe>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="py-8 bg-slate-900 border-t border-slate-800 text-center text-slate-500 text-sm">
-        &copy; 2026 Nazmul Alam. All rights reserved.
+    &copy; 2026 Nazmul Alam. All rights reserved.
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
