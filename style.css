@@ -14,9 +14,27 @@ html {
 
 /* Gradient Text Effect for your name */
 .gradient-text {
-    background: var(--gradient);
+    background: linear-gradient(90deg, #3b82f6, #22d3ee, #6366f1, #3b82f6);
+    background-size: 300% 100%;
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    animation: gradientMove 4s ease infinite;
+
+    filter: drop-shadow(0 0 8px rgba(59,130,246,0.4));
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Custom shadow for cards */
@@ -145,3 +163,20 @@ html {
         opacity: 1;
     }
 }
+
+.glow-pulse {
+    animation: glowPulse 3s infinite;
+}
+
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 20px rgba(59,130,246,0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(59,130,246,0.6);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(59,130,246,0.3);
+    }
+}
+

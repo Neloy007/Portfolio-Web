@@ -1,56 +1,84 @@
-const counters = document.querySelectorAll('.counter');
+document.addEventListener("DOMContentLoaded", () => {
 
-const labels = [
-    "Projects Completed",
-    "Projects Completed Today",
-    "Active Builds",
-    "Repositories Updated",
-    "Features Shipped",
-    "Systems Designed"
-];
+    /* 
+       COUNTER ANIMATION
+     */
 
-counters.forEach(counter => {
+    const counters = document.querySelectorAll(".counter");
 
-    const target = Number(counter.dataset.target);
-    let current = 0;
+    const labels = [
+        "Projects Completed",
+        "Projects Completed Today",
+        "Active Builds",
+        "Repositories Updated",
+        "Features Shipped",
+        "Systems Designed"
+    ];
 
-    const card = counter.closest('.stat-card');
-    const label = card.querySelector('.dynamic-label');
+    counters.forEach(counter => {
 
-    function updateCounter() {
+        const target = Number(counter.dataset.target);
+        let current = 0;
 
-        if (current < target) {
+        const card = counter.closest(".stat-card");
+        const label = card?.querySelector(".dynamic-label");
 
-            current++;
+        function animateCounter() {
 
-            counter.innerText = current + "+";
+            if (current < target) {
+                current++;
+                counter.innerText = `${current}+`;
+                setTimeout(animateCounter, 60);
+            } else {
+                startLiveEffect();
+            }
+        }
 
-            setTimeout(updateCounter, 80);
-
-        } else {
+        function startLiveEffect() {
 
             setInterval(() => {
 
-                card.classList.add("live-card");
-
                 const fake = target + Math.floor(Math.random() * 3);
 
-                counter.innerText = fake + "+";
+                counter.innerText = `${fake}+`;
 
-                label.innerText =
-                    labels[Math.floor(Math.random() * labels.length)];
+                if (label) {
+                    label.innerText =
+                        labels[Math.floor(Math.random() * labels.length)];
+                }
+
+                card?.classList.add("live-card");
 
                 setTimeout(() => {
-
-                    counter.innerText = target + "+";
-
-                    card.classList.remove("live-card");
-
-                }, 1200);
+                    counter.innerText = `${target}+`;
+                    card?.classList.remove("live-card");
+                }, 1000);
 
             }, 4000);
         }
-    }
 
-    updateCounter();
+        animateCounter();
+    });
+
+
+    /* 
+       APPLE STYLE SCROLL REVEAL
+     */
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+            }
+        });
+
+    }, {
+        threshold: 0.15
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+
 });
