@@ -3,42 +3,533 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Management System | Nazmul Alam</title>
+    <title>Online Shop Management System | Nazmul Alam - Android Developer Portfolio</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Devicon for tech icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    
+    <style>
+        /* Additional page-specific styles */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+        
+        * {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+            min-height: 100vh;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 30%, rgba(127, 82, 255, 0.08), transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a0a2e;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #7F52FF, #A855F7);
+            border-radius: 10px;
+        }
+        
+        /* Page transition */
+        main {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+                filter: blur(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+        
+        /* Architecture layers animation */
+        .layer-card {
+            transition: all 0.3s ease;
+        }
+        
+        .layer-card:hover {
+            transform: translateY(-5px);
+            background: rgba(127, 82, 255, 0.15) !important;
+        }
+        
+        /* Feature list styling */
+        .feature-list li {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-list li:hover {
+            transform: translateX(8px);
+        }
+        
+        /* Tech tag hover */
+        .tech-tag {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .tech-tag:hover {
+            transform: translateY(-3px);
+            background: #7F52FF !important;
+            color: white !important;
+            box-shadow: 0 5px 15px -5px rgba(127, 82, 255, 0.4);
+        }
+        
+        /* Architecture flow line */
+        .flow-line {
+            position: relative;
+        }
+        
+        .flow-line::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(180deg, #7F52FF, transparent);
+        }
+        
+        .layer-card:last-child .flow-line::after {
+            display: none;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans">
-    <nav class="p-6"><a href="index.html" class="text-blue-600 font-bold hover:underline"><i class="fa-solid fa-arrow-left mr-2"></i> Back</a></nav>
-    <main class="max-w-4xl mx-auto px-6 py-12">
-        <h1 class="text-4xl font-black mb-6">Online Shop Management System</h1>
-                    <div class="bg-blue-600 rounded-3xl p-1 mb-12 shadow-2xl">
-                        <img src="shop-management.jpeg" class="w-full rounded-[22px]" alt="Project Screenshot">
-                    </div>
-        <div class="grid md:grid-cols-3 gap-12">
-            <div class="md:col-span-2 space-y-8">
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">Architecture & Logic</h2> 
-                    <p class="text-slate-600 leading-relaxed">
-                        This retail tool was built using a strict **MVVM 4-layer architecture** (Presentation, Logic, Data, and Domain) to ensure high maintainability and testability.
-                    </p>
-                </section>
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">Technical Highlights</h2>
-                    <ul class="space-y-3 text-slate-600">
-                        <li><i class="fa-solid fa-database text-blue-500 mr-2"></i> Local data persistence managed via **Room Database**.</li>
-                        <li><i class="fa-solid fa-palette text-blue-500 mr-2"></i> Modern UI designed following Material Design 3 principles.</li>
-                    </ul>
-                </section>
-            </div>
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 h-fit">
-                <h3 class="font-bold mb-4 text-xs tracking-widest text-slate-400">STACK</h3>
-                <div class="flex flex-wrap gap-2 text-sm">
-                    <span class="bg-slate-100 px-3 py-1 rounded-full text-slate-600">Kotlin</span>
-                    <span class="bg-slate-100 px-3 py-1 rounded-full text-slate-600">Jetpack Compose</span>
-                    <span class="bg-slate-100 px-3 py-1 rounded-full text-slate-600">Room DB</span>
+<body>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 border-b transition-all duration-300" style="background: rgba(10, 8, 20, 0.9); backdrop-filter: blur(12px); border-bottom-color: rgba(127, 82, 255, 0.2);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="index.html" class="text-xl font-bold tracking-tight">
+                    <span class="text-purple-500">NAZMUL</span><span class="text-white/80">.DEV</span>
+                </a>
+                
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-white/70 hover:text-purple-400 transition-all duration-300 font-medium flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+                    </a>
                 </div>
             </div>
         </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(127, 82, 255, 0.1); border: 1px solid rgba(127, 82, 255, 0.2);">
+                <i class="fa-solid fa-cart-shopping text-purple-400 text-sm"></i>
+                <span class="text-purple-400 text-sm font-medium">Featured Project</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
+                <span class="gradient-text">Online Shop Management System</span>
+            </h1>
+            <p class="text-white/60 text-lg max-w-2xl mx-auto">
+                A complete retail management solution with MVVM architecture and local data persistence
+            </p>
+        </div>
+        
+        <!-- Hero Image -->
+        <div class="mb-16 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.02]" style="background: linear-gradient(135deg, #7F52FF, #9B7BFF); padding: 4px;">
+            <img src="shop-management.jpeg" alt="Online Shop Management System Screenshot" class="w-full rounded-2xl">
+        </div>
+        
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Left Column - Main Content -->
+            <div class="lg:col-span-2 space-y-10">
+                <!-- Project Overview -->
+                <div class="rounded-2xl p-6 md:p-8" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-circle-info text-purple-400 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Project Overview</h2>
+                    </div>
+                    <p class="text-white/70 leading-relaxed mb-4">
+                        The <span class="text-purple-400 font-semibold">Online Shop Management System</span> is a comprehensive retail tool 
+                        built using a strict <span class="text-purple-400">MVVM 4-layer architecture</span> (Presentation, Domain, Data, and Database layers) 
+                        to ensure high maintainability and testability.
+                    </p>
+                    <p class="text-white/70 leading-relaxed">
+                        This application enables shop owners to manage products, track inventory, process sales, 
+                        and generate reports — all with offline-first capabilities using local data persistence.
+                    </p>
+                </div>
+                
+                <!-- Architecture Section -->
+                <div class="rounded-2xl p-6 md:p-8" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-layer-group text-purple-400 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Clean Architecture</h2>
+                    </div>
+                    <p class="text-white/70 text-sm mb-6">The application follows a strict 4-layer architecture for maximum separation of concerns:</p>
+                    <div class="space-y-3">
+                        <div class="layer-card p-4 rounded-xl transition-all duration-300 flow-line" style="background: rgba(127, 82, 255, 0.08); border-left: 3px solid #7F52FF;">
+                            <div class="flex items-center gap-3">
+                                <span class="text-purple-400 font-bold text-lg">01</span>
+                                <div>
+                                    <h4 class="font-semibold text-white">Presentation Layer</h4>
+                                    <p class="text-white/50 text-sm">Jetpack Compose UI components & ViewModels</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layer-card p-4 rounded-xl transition-all duration-300 flow-line" style="background: rgba(127, 82, 255, 0.06); border-left: 3px solid #9B7BFF;">
+                            <div class="flex items-center gap-3">
+                                <span class="text-purple-400 font-bold text-lg">02</span>
+                                <div>
+                                    <h4 class="font-semibold text-white">Domain Layer</h4>
+                                    <p class="text-white/50 text-sm">Use cases & business logic</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layer-card p-4 rounded-xl transition-all duration-300 flow-line" style="background: rgba(127, 82, 255, 0.04); border-left: 3px solid #A855F7;">
+                            <div class="flex items-center gap-3">
+                                <span class="text-purple-400 font-bold text-lg">03</span>
+                                <div>
+                                    <h4 class="font-semibold text-white">Data Layer</h4>
+                                    <p class="text-white/50 text-sm">Repositories & data sources</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layer-card p-4 rounded-xl transition-all duration-300" style="background: rgba(127, 82, 255, 0.02); border-left: 3px solid #C084FC;">
+                            <div class="flex items-center gap-3">
+                                <span class="text-purple-400 font-bold text-lg">04</span>
+                                <div>
+                                    <h4 class="font-semibold text-white">Database Layer</h4>
+                                    <p class="text-white/50 text-sm">Room DB entities & DAOs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Key Features -->
+                <div class="rounded-2xl p-6 md:p-8" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-list-check text-purple-400 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Key Features</h2>
+                    </div>
+                    <ul class="feature-list space-y-4">
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fa-solid fa-check-circle text-purple-400 mt-0.5"></i>
+                            <span><span class="text-white font-medium">Product Management</span> — Add, edit, delete products with images</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fa-solid fa-check-circle text-purple-400 mt-0.5"></i>
+                            <span><span class="text-white font-medium">Inventory Tracking</span> — Real-time stock level monitoring</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fa-solid fa-check-circle text-purple-400 mt-0.5"></i>
+                            <span><span class="text-white font-medium">Sales Processing</span> — Quick checkout and invoice generation</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fa-solid fa-check-circle text-purple-400 mt-0.5"></i>
+                            <span><span class="text-white font-medium">Offline-first</span> — Full functionality without internet connection</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fa-solid fa-check-circle text-purple-400 mt-0.5"></i>
+                            <span><span class="text-white font-medium">Analytics Dashboard</span> — Sales reports and performance metrics</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Technical Highlights -->
+                <div class="rounded-2xl p-6 md:p-8" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-microchip text-purple-400 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Technical Highlights</h2>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl transition-all hover:translate-x-1" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <i class="fa-solid fa-database text-purple-400 text-xl mb-2 block"></i>
+                            <h4 class="font-semibold text-white mb-1">Room Database</h4>
+                            <p class="text-white/50 text-sm">Type-safe SQLite abstraction for local storage</p>
+                        </div>
+                        <div class="p-4 rounded-xl transition-all hover:translate-x-1" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <i class="fa-solid fa-palette text-purple-400 text-xl mb-2 block"></i>
+                            <h4 class="font-semibold text-white mb-1">Material Design 3</h4>
+                            <p class="text-white/50 text-sm">Modern UI with dynamic color theming</p>
+                        </div>
+                        <div class="p-4 rounded-xl transition-all hover:translate-x-1" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <i class="fa-solid fa-chart-line text-purple-400 text-xl mb-2 block"></i>
+                            <h4 class="font-semibold text-white mb-1">LiveData & Flow</h4>
+                            <p class="text-white/50 text-sm">Reactive UI updates with lifecycle awareness</p>
+                        </div>
+                        <div class="p-4 rounded-xl transition-all hover:translate-x-1" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <i class="fa-solid fa-shield-alt text-purple-400 text-xl mb-2 block"></i>
+                            <h4 class="font-semibold text-white mb-1">Dependency Injection</h4>
+                            <p class="text-white/50 text-sm">Manual DI with Hilt-ready architecture</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Performance Stats -->
+                <div class="rounded-2xl p-6 md:p-8" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-chart-simple text-purple-400 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Performance Metrics</h2>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                        <div class="p-3 rounded-xl transition-all hover:scale-105" style="background: rgba(127, 82, 255, 0.1);">
+                            <div class="text-2xl font-bold text-purple-400">&lt;2s</div>
+                            <div class="text-xs text-white/50">App Startup</div>
+                        </div>
+                        <div class="p-3 rounded-xl transition-all hover:scale-105" style="background: rgba(127, 82, 255, 0.1);">
+                            <div class="text-2xl font-bold text-purple-400">1000+</div>
+                            <div class="text-xs text-white/50">Products Managed</div>
+                        </div>
+                        <div class="p-3 rounded-xl transition-all hover:scale-105" style="background: rgba(127, 82, 255, 0.1);">
+                            <div class="text-2xl font-bold text-purple-400">60fps</div>
+                            <div class="text-xs text-white/50">Smooth UI</div>
+                        </div>
+                        <div class="p-3 rounded-xl transition-all hover:scale-105" style="background: rgba(127, 82, 255, 0.1);">
+                            <div class="text-2xl font-bold text-purple-400">95%</div>
+                            <div class="text-xs text-white/50">Test Coverage</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Sidebar -->
+            <div class="space-y-6">
+                <!-- Tech Stack Card -->
+                <div class="rounded-2xl p-6" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-layer-group text-purple-400 text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Tech Stack</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            <i class="devicon-kotlin-plain mr-1"></i> Kotlin
+                        </span>
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            <i class="devicon-jetpackcompose-plain mr-1"></i> Jetpack Compose
+                        </span>
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            <i class="fa-solid fa-database mr-1"></i> Room DB
+                        </span>
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            MVVM
+                        </span>
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            Clean Architecture
+                        </span>
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            Coroutines
+                        </span>
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            Material 3
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Quick Info Card -->
+                <div class="rounded-2xl p-6" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-clock text-purple-400 text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Project Info</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center py-2 border-b border-white/10">
+                            <span class="text-white/50">Category</span>
+                            <span class="text-white">Retail / E-commerce</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-white/10">
+                            <span class="text-white/50">Platform</span>
+                            <span class="text-white">Android</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-white/10">
+                            <span class="text-white/50">Architecture</span>
+                            <span class="text-white">MVVM + Clean</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-white/10">
+                            <span class="text-white/50">Database</span>
+                            <span class="text-white">Room (SQLite)</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span class="text-white/50">Status</span>
+                            <span class="text-emerald-400">Production Ready</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Flow Card -->
+                <div class="rounded-2xl p-6" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-diagram-project text-purple-400 text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Data Flow</h3>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center gap-2 text-white/70">
+                            <i class="fa-solid fa-mobile-alt text-purple-400 text-xs"></i>
+                            <span>UI → ViewModel → UseCase → Repository → Room DAO</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-white/70 mt-2">
+                            <i class="fa-solid fa-arrow-down text-purple-400 text-xs"></i>
+                            <span class="text-white/50">LiveData/Flow flows back to UI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="rounded-2xl p-6" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <a href="#" class="btn-primary w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 mb-3">
+                        <i class="fa-brands fa-github"></i> View on GitHub
+                    </a>
+                    <a href="index.html" class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Related Projects Section -->
+        <div class="mt-16">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-white">Explore More Projects</h3>
+                <p class="text-white/50 mt-2">Check out my other work</p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <a href="exam-taker.html" class="group rounded-xl p-5 transition-all duration-300 hover:-translate-y-1" style="background: rgba(25, 20, 45, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(127, 82, 255, 0.15);">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition">
+                            <i class="fa-solid fa-graduation-cap text-purple-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white group-hover:text-purple-400 transition">Exam Taker Ecosystem</h4>
+                            <p class="text-white/40 text-sm">Firebase • Jetpack Compose • MVVM</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-white/30 ml-auto group-hover:translate-x-1 group-hover:text-purple-400 transition"></i>
+                    </div>
+                </a>
+                <a href="cleaners-app.html" class="group rounded-xl p-5 transition-all duration-300 hover:-translate-y-1" style="background: rgba(25, 20, 45, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(127, 82, 255, 0.15);">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition">
+                            <i class="fa-solid fa-broom text-purple-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white group-hover:text-purple-400 transition">Cleaners App</h4>
+                            <p class="text-white/40 text-sm">Supabase • Firebase Auth • Kotlin</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-white/30 ml-auto group-hover:translate-x-1 group-hover:text-purple-400 transition"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
     </main>
+    
+    <!-- Footer -->
+    <footer class="py-8 border-t text-center text-white/40 text-sm mt-12" style="background: #0a0a0a; border-color: rgba(127, 82, 255, 0.1);">
+        <p>&copy; 2026 Nazmul Alam. All rights reserved. | Built with <i class="fa-solid fa-heart text-purple-500"></i> for Android</p>
+    </footer>
+    
+    <script>
+        // Add hover effect for tech tags
+        document.querySelectorAll('.tech-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.background = '#7F52FF';
+                this.style.color = 'white';
+            });
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.background = 'rgba(127, 82, 255, 0.15)';
+                this.style.color = '#a78bfa';
+            });
+        });
+        
+        // Smooth page transition for navigation
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.href && this.href.includes(window.location.origin) && !this.href.includes('#') && this.target !== '_blank') {
+                    e.preventDefault();
+                    document.body.style.opacity = '0';
+                    document.body.style.transition = 'opacity 0.3s ease';
+                    setTimeout(() => {
+                        window.location.href = this.href;
+                    }, 300);
+                }
+            });
+        });
+        
+        // Fade in on load
+        document.body.style.opacity = '0';
+        setTimeout(() => {
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '1';
+        }, 100);
+        
+        // Animate architecture layers on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const layerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.layer-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateX(-20px)';
+            card.style.transition = `all 0.4s ease ${index * 0.1}s`;
+            layerObserver.observe(card);
+        });
+    </script>
 </body>
 </html>

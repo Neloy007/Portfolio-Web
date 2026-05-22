@@ -3,324 +3,492 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nazmul Alam | Android Developer</title>
+    <title>Nazmul Alam | Android Developer Portfolio</title>
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Your Custom Styles -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Scripts -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Devicon for better icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    
+    <style>
+        /* Additional inline styles for premium feel */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+        
+        * {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        
+        /* Custom cursor for premium feel */
+        body {
+            cursor: default;
+        }
+        
+        a, button {
+            cursor: pointer;
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Hide scrollbar while keeping functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Better focus ring */
+        :focus-visible {
+            outline: 2px solid #7F52FF;
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans selection:bg-blue-100" x-data="{ mobileMenu: false }">
+<body class="text-white font-sans selection:bg-purple-500/30" x-data="{ mobileMenu: false }">
 
     <!-- Welcome Splash Screen -->
-<div 
-    x-data="{ loading: true }" 
-    x-init="setTimeout(() => loading = false, 2500)" 
-    x-show="loading" 
-    x-transition:leave="transition ease-in duration-700"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
-    class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-900 text-white"
->
-    <!-- Animated Logo/Icon -->
-    <div class="relative">
-        <div class="absolute -inset-4 bg-blue-600 rounded-full blur opacity-20 animate-pulse"></div>
-        <i class="fa-solid fa-code text-5xl text-blue-500 mb-4 relative"></i>
+    <div 
+        x-data="{ loading: true }" 
+        x-init="setTimeout(() => loading = false, 2500)" 
+        x-show="loading" 
+        x-transition:leave="transition ease-in duration-700"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed inset-0 z-[100] flex flex-col items-center justify-center"
+        style="background: linear-gradient(135deg, #0a0a0a, #1a0a2e)"
+    >
+        <div class="relative">
+            <div class="absolute -inset-4 bg-purple-600 rounded-full blur-xl opacity-30 animate-pulse"></div>
+            <i class="fa-brands fa-android text-6xl text-purple-500 mb-4 relative"></i>
+        </div>
+        <h1 class="text-2xl font-bold tracking-widest mt-4">
+            NAZMUL<span class="text-purple-500">.DEV</span>
+        </h1>
+        <div class="w-48 h-1 bg-purple-900/50 rounded-full mt-6 overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-purple-600 to-purple-400 loading-bar"></div>
+        </div>
+        <p class="text-purple-300/50 text-xs mt-4 uppercase tracking-[0.3em]">Initializing Portfolio</p>
     </div>
-    
-    <h1 class="text-2xl font-bold tracking-widest mt-4">
-        NAZMUL<span class="text-blue-500">.DEV</span>
-    </h1>
-    
-    <!-- Progress Bar Animation -->
-    <div class="w-48 h-1 bg-slate-800 rounded-full mt-6 overflow-hidden">
-        <div class="h-full bg-blue-500 loading-bar"></div>
-    </div>
-    
-    <p class="text-slate-500 text-xs mt-4 uppercase tracking-[0.3em]">Initializing Portfolio</p>
-</div>
 
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <nav class="sticky top-0 z-50 border-b transition-all duration-300" style="background: rgba(10, 8, 20, 0.9); backdrop-filter: blur(12px); border-bottom-color: rgba(127, 82, 255, 0.2);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <div class="text-xl font-bold tracking-tight text-blue-600">NAZMUL.DEV</div>
+                <div class="text-xl font-bold tracking-tight">
+                    <span class="text-purple-500">NAZMUL</span><span class="text-white/80">.DEV</span>
+                </div>
                 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 font-medium text-slate-600">
-                    <a href="#about" class="hover:text-blue-600 transition">About</a>
-                    <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
-                    <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
-                    <a href="#contact" class="hover:text-blue-600 transition text-blue-600 border border-blue-600 px-4 py-1 rounded-full hover:bg-blue-50">Hire Me</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-white/70 hover:text-purple-400 transition-all duration-300 font-medium relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#skills" class="text-white/70 hover:text-purple-400 transition-all duration-300 font-medium relative group">
+                        Skills
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#projects" class="text-white/70 hover:text-purple-400 transition-all duration-300 font-medium relative group">
+                        Projects
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="px-5 py-2 rounded-xl border-2 border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transition-all duration-300 font-medium">
+                        Hire Me
+                    </a>
                 </div>
 
                 <!-- Mobile Button -->
                 <div class="md:hidden">
-                    <button @click="mobileMenu = !mobileMenu" class="text-slate-600">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                    <button @click="mobileMenu = !mobileMenu" class="text-white/70 text-2xl">
+                        <i class="fa-solid fa-bars"></i>
                     </button>
                 </div>
             </div>
         </div>
+        
         <!-- Mobile Menu -->
-        <div x-show="mobileMenu" x-cloak class="md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-2">
-            <a href="#about" class="block py-2 text-slate-600">About</a>
-            <a href="#skills" class="block py-2 text-slate-600">Skills</a>
-            <a href="#projects" class="block py-2 text-slate-600">Projects</a>
+        <div x-show="mobileMenu" x-cloak class="md:hidden px-4 py-4 space-y-3" style="background: rgba(10, 8, 20, 0.95); backdrop-filter: blur(12px);">
+            <a href="#about" class="block py-2 text-white/70 hover:text-purple-400 transition" @click="mobileMenu = false">About</a>
+            <a href="#skills" class="block py-2 text-white/70 hover:text-purple-400 transition" @click="mobileMenu = false">Skills</a>
+            <a href="#projects" class="block py-2 text-white/70 hover:text-purple-400 transition" @click="mobileMenu = false">Projects</a>
+            <a href="#contact" class="block py-2 text-purple-400 font-semibold" @click="mobileMenu = false">Contact</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="py-20 bg-white" id="about">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
-            <div class="md:w-2/3">
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-6">
-                    Hi, I'm 
-                    <span class="gradient-text">Nazmul Alam</span>
-                </h1>              
-                
-<p class="text-xl text-slate-600 mb-8 max-w-2xl leading-relaxed">
-                    Android Developer with a solid foundation in Kotlin and Jetpack Compose. I build robust, user-centric mobile applications with Clean Architecture.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="mailto:neloymac24@gmail.com" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-blue-200 hover:bg-blue-700 transition">Get In Touch</a>
-                    <a href="https://github.com/Neloy007" target="_blank" class="bg-slate-800 text-white px-8 py-3 rounded-lg font-bold hover:bg-slate-900 transition"><i class="fa-brands fa-github mr-2"></i> GitHub</a>
+    <header class="relative py-20 reveal" id="about">
+        <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- LEFT CONTENT -->
+                <div class="md:w-2/3 space-y-6">
+                    <p class="text-purple-400 font-semibold text-lg reveal-child flex items-center gap-2">
+                        <i class="fa-brands fa-android"></i> Android Developer
+                    </p>
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight reveal-child">
+                        Hi, I'm
+                        <span class="gradient-text">Nazmul Alam</span>
+                    </h1>
+                    <p class="text-xl text-white/60 max-w-2xl leading-relaxed reveal-child">
+                        I build exceptional Android experiences with Kotlin and Jetpack Compose. 
+                        Let's create something amazing together.
+                    </p>
+                    <div class="flex flex-wrap gap-4 reveal-child">
+                        <a href="mailto:neloymac24@gmail.com" class="btn-primary px-8 py-3 rounded-xl font-semibold flex items-center gap-2">
+                            Let's Collaborate <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </a>
+                        <a href="https://github.com/Neloy007" target="_blank" class="px-8 py-3 rounded-xl font-semibold flex items-center gap-2 transition-all duration-300 hover:-translate-y-1" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                    </div>
+                    
+                    <!-- Social Icons -->
+                    <div class="flex gap-3 pt-4 reveal-child">
+                        <a href="https://github.com/Neloy007" class="social-icon w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <i class="fa-brands fa-github text-white/70 text-lg"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/nazmul-alam-616260330/" class="social-icon w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <i class="fa-brands fa-linkedin-in text-white/70 text-lg"></i>
+                        </a>
+                        <a href="https://x.com/neloymac24" class="social-icon w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <i class="fa-brands fa-twitter text-white/70 text-lg"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="md:w-1/3 mt-12 md:mt-0 flex justify-center">
-                <div class="w-64 h-64 bg-blue-100 rounded-full flex items-center justify-center border-4 border-white shadow-xl overflow-hidden glow-pulse">                    
-                    <img src="Nazmul_Formal.jpeg" alt="Nazmul Alam" class="w-full h-full object-cover">                
+
+                <!-- RIGHT IMAGE -->
+                <div class="md:w-1/3 flex justify-center reveal-child">
+                    <div class="relative group">
+                        <div class="absolute -inset-8 bg-purple-600/20 blur-3xl rounded-full group-hover:bg-purple-500/30 transition-all duration-500"></div>
+                        <div class="w-72 h-72 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl glow-pulse relative">
+                            <img src="Nazmul_Formal.jpeg" alt="Nazmul Alam" class="w-full h-full object-cover">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
-    <!-- Animated Stats Section -->
-    <section class="py-16 bg-white">
+
+    <!-- About Me Section -->
+    <section class="py-20 reveal">
         <div class="max-w-6xl mx-auto px-4">
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-
-                <!-- Stat 1 -->
-                <div class="stat-card bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
-
-                    <!-- Icon -->
-                    <div class="mb-4">
-                        <i class="fa-solid fa-chart-line text-3xl text-blue-500 pulse-icon"></i>
-                    </div>
-
-                    <!-- Animated Number -->
-                    <h2 class="text-5xl font-extrabold text-blue-600 counter" data-target="10">
-                        0
-                    </h2>
-
-                    <!-- Dynamic Label -->
-                    <p class="dynamic-label mt-3 text-slate-600 font-medium tracking-wide">
-                        Projects Completed
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="gradient-text">About Me</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Who am I?</h3>
+                    <p class="text-white/60 leading-relaxed mb-6">
+                        I'm a passionate Android Developer with expertise in creating modern, 
+                        performant mobile applications. I specialize in Kotlin, Jetpack Compose, 
+                        and Clean Architecture principles. With 2+ years of hands-on experience, 
+                        I build apps that are fast, reliable, and user-centric.
                     </p>
-
-                </div>
-
-                <!-- Stat 2 -->
-                <div class="stat-card bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
-
-                    <div class="mb-4">
-                        <i class="fa-solid fa-layer-group text-3xl text-blue-500 pulse-icon"></i>
+                    <div class="grid grid-cols-2 gap-4 p-5 rounded-2xl" style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div><span class="font-bold text-purple-400">Name:</span> <span class="text-white/70">Nazmul Alam</span></div>
+                        <div><span class="font-bold text-purple-400">Email:</span> <span class="text-white/70">neloymac24@gmail.com</span></div>
+                        <div><span class="font-bold text-purple-400">Phone:</span> <span class="text-white/70">01568346525</span></div>
+                        <div><span class="font-bold text-purple-400">Location:</span> <span class="text-white/70">Dhanmondi, Dhaka</span></div>
+                        <div><span class="font-bold text-purple-400">Experience:</span> <span class="text-white/70">2+ Years</span></div>
+                        <div><span class="font-bold text-purple-400">Freelance:</span> <span class="text-emerald-400">Available</span></div>
                     </div>
-
-                        <h2 class="text-5xl font-extrabold text-blue-600 counter" data-target="3">
-                        0
-                        </h2>
-
-                    <p class="dynamic-label mt-3 text-slate-600 font-medium tracking-wide">
-                        Architectures Used
-                    </p>
-
                 </div>
-
-                <!-- Stat 3 -->
-                <div class="stat-card bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
-
-                    <div class="mb-4">
-                        <i class="fa-solid fa-code text-3xl text-blue-500 pulse-icon"></i>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">My Experience</h3>
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-purple-500 pl-4 hover:border-purple-400 transition">
+                            <h4 class="font-bold text-lg text-white">Android Developer (Freelance)</h4>
+                            <p class="text-purple-400 text-sm mb-2">2024 - Present</p>
+                            <p class="text-white/60 text-sm">Building custom Android applications with Jetpack Compose, MVVM, and modern architecture patterns.</p>
+                        </div>
+                        <div class="border-l-2 border-white/20 pl-4 hover:border-purple-500 transition">
+                            <h4 class="font-bold text-lg text-white">Junior Android Developer</h4>
+                            <p class="text-purple-400 text-sm mb-2">2023 - 2024</p>
+                            <p class="text-white/60 text-sm">Developed and maintained Android apps with Kotlin, Room DB, and Retrofit.</p>
+                        </div>
                     </div>
-
-                    <h2 class="text-5xl font-extrabold text-blue-600 counter" data-target="2">
-                        0
-                    </h2>
-
-                    <p class="dynamic-label mt-3 text-slate-600 font-medium tracking-wide">
-                        Years Learning
-                    </p>
-
                 </div>
-
             </div>
+        </div>
+    </section>
 
+    <!-- Stats Section -->
+    <section class="py-16 reveal">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                <div class="stat-card rounded-2xl p-8 transition-all duration-300">
+                    <div class="mb-4"><i class="fa-solid fa-chart-line text-3xl text-purple-400 pulse-icon"></i></div>
+                    <h2 class="text-5xl font-extrabold counter text-purple-400" data-target="10">0</h2>
+                    <p class="dynamic-label mt-3 text-white/50 font-medium tracking-wide">Projects Completed</p>
+                </div>
+                <div class="stat-card rounded-2xl p-8 transition-all duration-300">
+                    <div class="mb-4"><i class="fa-solid fa-layer-group text-3xl text-purple-400 pulse-icon"></i></div>
+                    <h2 class="text-5xl font-extrabold counter text-purple-400" data-target="5">0</h2>
+                    <p class="dynamic-label mt-3 text-white/50 font-medium tracking-wide">Architectures Used</p>
+                </div>
+                <div class="stat-card rounded-2xl p-8 transition-all duration-300">
+                    <div class="mb-4"><i class="fa-solid fa-code text-3xl text-purple-400 pulse-icon"></i></div>
+                    <h2 class="text-5xl font-extrabold counter text-purple-400" data-target="3">0</h2>
+                    <p class="dynamic-label mt-3 text-white/50 font-medium tracking-wide">Years Learning</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section class="py-20 bg-slate-50" id="skills">
+    <section class="py-20 reveal" id="skills">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">Technical Arsenal</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" x-data="{ 
-                categories: [
-                    { 
-                        title: 'Languages', 
-                        skills: ['Kotlin (Proficient)', 'Java (Basic)'],
-                        icon: 'fa-terminal' 
-                    },
-                    { 
-                        title: 'Android UI', 
-                        skills: ['Jetpack Compose', 'XML Layouts', 'Material Design'],
-                        icon: 'fa-android' 
-                    },
-                    { 
-                        title: 'Architecture', 
-                        skills: ['MVVM', 'Clean Architecture', 'Repository Pattern'],
-                        icon: 'fa-layer-group' 
-                    },
-                    { 
-                        title: 'Storage & API', 
-                        skills: ['Room DB', 'Retrofit / Ktor', 'Firebase / Supabase'],
-                        icon: 'fa-cloud-arrow-down' 
-                    }
-                ] 
-            }">
-                <template x-for="cat in categories">
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-500 transition-all duration-300 group">
-                        <!-- Specific Skill Icon -->
-                        <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                            <i :class="'fa-solid ' + cat.icon + ' text-2xl'"></i>
-                        </div>
-                        
-                        <h3 class="text-xl font-bold mb-4 text-slate-800" x-text="cat.title"></h3>
-                        
-                        <ul class="space-y-3">
-                            <template x-for="skill in cat.skills">
-                                <li class="flex items-center text-slate-600 text-sm">
-                                    <i class="fa-solid fa-circle-check text-blue-400 mr-2 text-xs"></i>
-                                    <span x-text="skill"></span>
-                                </li>
-                            </template>
-                        </ul>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="gradient-text">My Skills</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-white"><i class="fa-solid fa-code text-purple-400"></i> Technical Skills</h3>
+                    <div class="space-y-5">
+                        <div><div class="flex justify-between mb-2"><span class="font-medium text-white/80">Kotlin</span><span class="text-purple-400 font-semibold">85%</span></div><div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" style="width: 0%"></div></div></div>
+                        <div><div class="flex justify-between mb-2"><span class="font-medium text-white/80">Jetpack Compose</span><span class="text-purple-400 font-semibold">80%</span></div><div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" style="width: 0%"></div></div></div>
+                        <div><div class="flex justify-between mb-2"><span class="font-medium text-white/80">MVVM / Clean Architecture</span><span class="text-purple-400 font-semibold">85%</span></div><div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" style="width: 0%"></div></div></div>
+                        <div><div class="flex justify-between mb-2"><span class="font-medium text-white/80">Room DB / SQLite</span><span class="text-purple-400 font-semibold">75%</span></div><div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" style="width: 0%"></div></div></div>
                     </div>
-                </template>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-white"><i class="fa-solid fa-users text-purple-400"></i> Professional Skills</h3>
+                    <div class="space-y-5">
+                        <div><div class="flex justify-between mb-2"><span class="font-medium text-white/80">Problem Solving</span><span class="text-purple-400 font-semibold">90%</span></div><div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" style="width: 0%"></div></div></div>
+                        <div><div class="flex justify-between mb-2"><span class="font-medium text-white/80">Team Collaboration</span><span class="text-purple-400 font-semibold">85%</span></div><div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" style="width: 0%"></div></div></div>
+                        <div><div class="flex justify-between mb-2"><span class="font-medium text-white/80">Communication</span><span class="text-purple-400 font-semibold">80%</span></div><div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" style="width: 0%"></div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Technologies -->
+            <div class="mt-16 pt-8 border-t border-white/10">
+                <h3 class="text-xl font-bold mb-8 text-center text-white">Tools & Technologies</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div class="tool-card rounded-xl p-4 text-center transition-all duration-300">
+                        <i class="fa-brands fa-android text-3xl text-purple-400 mb-2"></i>
+                        <p class="text-sm font-medium text-white/70">Android Studio</p>
+                    </div>
+                    <div class="tool-card rounded-xl p-4 text-center transition-all duration-300">
+                        <img src="kotlin.png" alt="Kotlin" class="w-8 h-8 mx-auto mb-2">
+                        <p class="text-sm font-medium text-white/70">Kotlin</p>
+                    </div>
+                    <div class="tool-card rounded-xl p-4 text-center transition-all duration-300">
+                        <img src="firebase.png" alt="Firebase" class="w-8 h-8 mx-auto mb-2">
+                        <p class="text-sm font-medium text-white/70">Firebase</p>
+                    </div>
+                    <div class="tool-card rounded-xl p-4 text-center transition-all duration-300">
+                        <i class="fa-solid fa-database text-3xl text-emerald-400 mb-2"></i>
+                        <p class="text-sm font-medium text-white/70">Supabase</p>
+                    </div>
+                    <div class="tool-card rounded-xl p-4 text-center transition-all duration-300">
+                        <i class="fa-brands fa-git-alt text-3xl text-orange-400 mb-2"></i>
+                        <p class="text-sm font-medium text-white/70">Git</p>
+                    </div>
+                    <div class="tool-card rounded-xl p-4 text-center transition-all duration-300">
+                        <img src="gradle.png" alt="Gradle" class="w-8 h-8 mx-auto mb-2">
+                        <p class="text-sm font-medium text-white/70">Gradle</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section class="py-20 bg-white" id="projects">
+    <section class="py-20 reveal" id="projects">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12">Featured Projects</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="gradient-text">My Projects</span>
+            </h2>
             <div class="grid md:grid-cols-3 gap-8">
-
-
-
-                <!-- Project 1 -->
-            <a href="exam-taker.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
-                <div class="h-48 bg-blue-600 flex items-center justify-center p-6 text-white overflow-hidden relative">
-                    <i class="fa-solid fa-graduation-cap text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
-                    <span class="italic font-bold relative tracking-wide">Exam Taker Ecosystem</span>
-                </div>
-                
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Exam Taker Ecosystem</h3>
-                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">Dual-platform system with student mobile app and web admin dashboard. Real-time Firebase sync.</p>
-                    <div class="flex gap-2">
-                        <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium">Jetpack Compose</span>
-                        <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium text-amber-600">Firebase</span>
+                <a href="exam-taker.html" class="project-card rounded-2xl overflow-hidden transition-all duration-300 block group">
+                    <div class="h-48 flex items-center justify-center p-6 text-white overflow-hidden relative" style="background: linear-gradient(135deg, #7F52FF, #9B7BFF);">
+                        <i class="fa-solid fa-graduation-cap text-6xl opacity-20 absolute transition-transform duration-500 group-hover:scale-125"></i>
+                        <span class="italic font-bold relative tracking-wide">Exam Taker Ecosystem</span>
                     </div>
-                </div>
-            </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">Exam Taker Ecosystem</h3>
+                        <p class="text-white/60 text-sm mb-4 leading-relaxed">Dual-platform system with student mobile app and web admin dashboard.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 rounded border border-white/10 text-white/70" style="background: rgba(255, 255, 255, 0.05);">Jetpack Compose</span>
+                            <span class="text-xs px-2 py-1 rounded border border-white/10 text-white/70" style="background: rgba(255, 255, 255, 0.05);">Firebase</span>
+                        </div>
+                    </div>
+                </a>
 
+                <a href="shop-system.html" class="project-card rounded-2xl overflow-hidden transition-all duration-300 block group">
+                    <div class="h-48 flex items-center justify-center p-6 text-white overflow-hidden relative" style="background: linear-gradient(135deg, #6B3FEA, #7F52FF);">
+                        <i class="fa-solid fa-cart-shopping text-6xl opacity-20 absolute transition-transform duration-500 group-hover:scale-125"></i>
+                        <span class="italic font-bold relative">Online Shop System</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">Online Shop Management</h3>
+                        <p class="text-white/60 text-sm mb-4">MVVM 4-layer architecture retail tool with Room DB.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 rounded border border-white/10 text-white/70" style="background: rgba(255, 255, 255, 0.05);">Room DB</span>
+                            <span class="text-xs px-2 py-1 rounded border border-white/10 text-white/70" style="background: rgba(255, 255, 255, 0.05);">MVVM</span>
+                        </div>
+                    </div>
+                </a>
 
-                <!-- Project 2: Online Shop Management -->
-        <a href="shop-system.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
-            <div class="h-48 bg-slate-800 flex items-center justify-center p-6 text-white overflow-hidden relative">
-                <i class="fa-solid fa-cart-shopping text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
-                <span class="italic font-bold relative">Online Shop System</span>
-            </div>
-            <div class="p-6">
-                <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Online Shop Management</h3>
-                <p class="text-slate-600 text-sm mb-4">MVVM 4-layer architecture retail tool focusing on local data persistence and Material Design.</p>
-                <div class="flex gap-2">
-                    <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">Room DB</span>
-                    <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">MVVM</span>
-                </div>
-            </div>
-        </a>
-
-        <!-- Project 3: Cleaners App -->
-        <a href="cleaners-app.html" class="group block bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-300 transition-all hover:-translate-y-1 hover:shadow-xl">
-            <div class="h-48 bg-blue-400 flex items-center justify-center p-6 text-white overflow-hidden relative">
-                <i class="fa-solid fa-broom text-6xl opacity-20 absolute transition-transform group-hover:scale-125"></i>
-                <span class="italic font-bold relative">Cleaners App</span>
-            </div>
-            <div class="p-6">
-                <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Cleaners App</h3>
-                <p class="text-slate-600 text-sm mb-4">Service tracking app utilizing Supabase for optimized image storage and Firebase Auth.</p>
-                <div class="flex gap-2">
-                    <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200">Supabase</span>
-                    <span class="text-xs bg-white px-2 py-1 rounded border border-slate-200 font-medium text-blue-500">Kotlin</span>
-                </div>
-            </div>
-        </a>
+                <a href="cleaners-app.html" class="project-card rounded-2xl overflow-hidden transition-all duration-300 block group">
+                    <div class="h-48 flex items-center justify-center p-6 text-white overflow-hidden relative" style="background: linear-gradient(135deg, #9B7BFF, #A855F7);">
+                        <i class="fa-solid fa-broom text-6xl opacity-20 absolute transition-transform duration-500 group-hover:scale-125"></i>
+                        <span class="italic font-bold relative">Cleaners App</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">Cleaners App</h3>
+                        <p class="text-white/60 text-sm mb-4">Service tracking app with Supabase and Firebase Auth.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 rounded border border-white/10 text-white/70" style="background: rgba(255, 255, 255, 0.05);">Supabase</span>
+                            <span class="text-xs px-2 py-1 rounded border border-white/10 text-white/70" style="background: rgba(255, 255, 255, 0.05);">Kotlin</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Education & Contact -->
-    <section class="py-20 bg-slate-900 text-white" id="contact">
-        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-16">
+    <section class="py-20 reveal" id="contact">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                <span class="gradient-text">Education & Contact</span>
+            </h2>
+            <p class="text-white/60 max-w-2xl mx-auto">My academic journey and how to reach me</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Education Column -->
             <div>
-                <h2 class="text-3xl font-bold mb-8">Education</h2>
-                <div class="space-y-6">
-                    <div class="border-l-2 border-blue-500 pl-4">
-                        <p class="text-blue-400 font-bold">2024 (Appeared)</p>
-                        <h4 class="font-bold text-lg">B.Sc. in CSE</h4>
-                        <p class="text-slate-400">Current CGPA: 3.55 | National University (Ideal College)</p>
+                <div class="rounded-2xl p-6 md:p-8" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-graduation-cap text-purple-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Education</h3>
                     </div>
-                    <div class="border-l-2 border-slate-600 pl-4">
-                        <p class="text-slate-400 font-bold">2020</p>
-                        <h4 class="font-bold text-lg">Higher Secondary Certificate</h4>
-                        <p class="text-slate-400">GPA: 4.50 | Bajitpur Govt. College</p>
+                    
+                    <div class="space-y-6">
+                        <!-- B.Sc. -->
+                        <div class="group relative pl-5 border-l-2 border-purple-500/50 hover:border-purple-400 transition-all duration-300">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-purple-500 group-hover:scale-125 transition-transform duration-300"></div>
+                            <p class="text-purple-400 font-bold text-sm mb-1">2024 (Appeared)</p>
+                            <h4 class="font-bold text-lg text-white mb-1">B.Sc. in Computer Science & Engineering</h4>
+                            <p class="text-white/50 text-sm">Current CGPA: 3.55 | National University (Ideal College)</p>
+                        </div>
+                        
+                        <!-- HSC -->
+                        <div class="group relative pl-5 border-l-2 border-white/20 hover:border-purple-400 transition-all duration-300">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white/30 group-hover:bg-purple-400 group-hover:scale-125 transition-all duration-300"></div>
+                            <p class="text-white/40 font-bold text-sm mb-1">2020</p>
+                            <h4 class="font-bold text-lg text-white mb-1">Higher Secondary Certificate</h4>
+                            <p class="text-white/50 text-sm">GPA: 4.50 | Bajitpur Govt. College</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Contact Column -->
             <div>
-                <h2 class="text-3xl font-bold mb-8">Contact Info</h2>
-                <ul class="space-y-4 text-lg">
-                    <li><i class="fa-solid fa-envelope text-blue-400 mr-4 w-6"></i> neloymac24@gmail.com</li>
-                    <li><i class="fa-solid fa-phone text-blue-400 mr-4 w-6"></i> 01568346525</li>
-                    <li><i class="fa-solid fa-location-dot text-blue-400 mr-4 w-6"></i> Dhanmondi, Dhaka</li>
-                </ul>
-                <div class="mt-8 p-3 bg-slate-800 rounded-2xl border border-slate-700 shadow-lg">
-                    <h3 class="text-white text-sm font-mono mb-4">
-                        ⚲ My Location
-                    </h3>
-
-                    <iframe
-                        class="w-full h-15 rounded-xl"
-                        loading="lazy"
-                        allowfullscreen
-                        referrerpolicy="no-referrer-when-downgrade"
-                        src="https://www.google.com/maps?q=Dhanmondi+4A,+Dhaka,+Bangladesh&output=embed">
-                    </iframe>
+                <div class="rounded-2xl p-6 md:p-8" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-address-card text-purple-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Contact Info</h3>
+                    </div>
+                    
+                    <!-- Contact Items -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-4 p-3 rounded-xl transition-all duration-300 hover:translate-x-1" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                                <i class="fa-solid fa-envelope text-purple-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-purple-400/70 uppercase tracking-wider">Email</p>
+                                <a href="mailto:neloymac24@gmail.com" class="text-white hover:text-purple-400 transition">neloymac24@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 p-3 rounded-xl transition-all duration-300 hover:translate-x-1" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                                <i class="fa-solid fa-phone text-purple-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-purple-400/70 uppercase tracking-wider">Phone</p>
+                                <a href="tel:01568346525" class="text-white hover:text-purple-400 transition">01568346525</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 p-3 rounded-xl transition-all duration-300 hover:translate-x-1" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot text-purple-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-purple-400/70 uppercase tracking-wider">Location</p>
+                                <p class="text-white">Dhanmondi, Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="mb-8">
+                        <p class="text-sm text-white/50 mb-3">Connect with me</p>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/Neloy007" target="_blank" class="social-icon w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);">
+                                <i class="fa-brands fa-github text-white/70 text-lg"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/nazmul-alam-616260330/" class="social-icon w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);">
+                                <i class="fa-brands fa-linkedin-in text-white/70 text-lg"></i>
+                            </a>
+                            <a href="https://x.com/neloymac24" class="social-icon w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);">
+                                <i class="fa-brands fa-twitter text-white/70 text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Map -->
+                    <div>
+                        <p class="text-sm text-white/50 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-map-pin text-purple-400"></i> Find me here
+                        </p>
+                        <div class="overflow-hidden rounded-xl border border-purple-500/20 transition-all duration-300 hover:border-purple-400/50">
+                            <iframe 
+                                class="w-full h-52 md:h-56 rounded-xl transition-transform duration-500 hover:scale-[1.02]" 
+                                loading="lazy" 
+                                allowfullscreen 
+                                referrerpolicy="no-referrer-when-downgrade" 
+                                src="https://www.google.com/maps?q=Dhanmondi+4A,+Dhaka,+Bangladesh&output=embed"
+                                title="My Location Map">
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="py-8 bg-slate-900 border-t border-slate-800 text-center text-slate-500 text-sm">
-    &copy; 2026 Nazmul Alam. All rights reserved.
+    <footer class="py-8 border-t text-center text-white/40 text-sm" style="background: #0a0a0a; border-color: rgba(127, 82, 255, 0.1);">
+        <p>&copy; 2026 Nazmul Alam. All rights reserved. | Built with <i class="fa-solid fa-heart text-purple-500"></i> for Android</p>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>
+    
+    
