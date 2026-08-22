@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Mate | Nazmul Alam - Android Developer Portfolio</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Devicon for tech icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+
+        * {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 30%, rgba(127, 82, 255, 0.08), transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a0a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #7F52FF, #A855F7);
+            border-radius: 10px;
+        }
+
+        main {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+                filter: blur(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        .feature-list li {
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            transform: translateX(8px);
+        }
+
+        .tech-tag {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tech-tag:hover {
+            transform: translateY(-3px);
+            background: #7F52FF !important;
+            color: white !important;
+            box-shadow: 0 5px 15px -5px rgba(127, 82, 255, 0.4);
+        }
+
+        /* Status pill for in-development items */
+        .status-pill {
+            font-size: 0.68rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+
+        .status-progress {
+            background: rgba(251, 191, 36, 0.12);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .status-planned {
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        /* Design note callout */
+        .design-note {
+            background: rgba(127, 82, 255, 0.06);
+            border-left: 3px solid #7F52FF;
+        }
+
+        /* Mind Reader exploration card */
+        .explore-card {
+            background: repeating-linear-gradient(135deg, rgba(168, 85, 247, 0.04), rgba(168, 85, 247, 0.04) 10px, rgba(127, 82, 255, 0.04) 10px, rgba(127, 82, 255, 0.04) 20px), rgba(25, 20, 45, 0.8);
+            border: 1px dashed rgba(168, 85, 247, 0.35);
+        }
+
+        /* Video frame */
+        .video-frame video {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 border-b transition-all duration-300" style="background: rgba(10, 8, 20, 0.9); backdrop-filter: blur(12px); border-bottom-color: rgba(127, 82, 255, 0.2);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="index.html" class="text-xl font-bold tracking-tight">
+                    <span class="text-purple-500">NAZMUL</span><span class="text-white/80">.DEV</span>
+                </a>
+
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-white/70 hover:text-purple-400 transition-all duration-300 font-medium flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(127, 82, 255, 0.1); border: 1px solid rgba(127, 82, 255, 0.2);">
+                <i class="fa-solid fa-face-smile text-purple-400 text-sm"></i>
+                <span class="text-purple-400 text-sm font-medium">Currently Building</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
+                <span class="gradient-text">Mood Mate</span>
+            </h1>
+            <p class="text-white/60 text-lg max-w-2xl mx-auto">
+                A minimal, camera-based mood detection app that pairs facial-expression analysis with a moment of real self-reflection
+            </p>
+        </div>
+
+        <!-- Demo Video / Hero Media -->
+        <div class="mb-16 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.02] video-frame" style="background: linear-gradient(135deg, #7F52FF, #9B7BFF); padding: 4px;">
+            <video class="w-full rounded-2xl" autoplay muted loop playsinline poster="mood-mate-poster.jpg">
+                <source src="mood-mate-demo.mp4" type="video/mp4">
+                Your browser does not support embedded video.
+            </video>
+        </div>
+        <p class="text-center text-white/40 text-sm -mt-12 mb-16">Early demo — UI and detection flow still evolving</p>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Left Column - Main Content -->
+            <div class="lg:col-span-2 space-y-10">
+                <!-- Project Overview -->
+                <div class="rounded-2xl p-6 md:p-8" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-circle-info text-purple-400 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Project Overview</h2>
+                    </div>
+                    <p class="text-white/70 leading-relaxed mb-4">
+                        Most mood trackers rely on people remembering to log how they feel — which is exactly the habit
+                        most people struggle to keep. <span class="text-purple-400 font-semibold">Mood Mate</span> takes
+                        a different approach: it reads facial expression through the camera in the moment, then turns
+                        that reading into a short act of self-reflection instead of a one-line confirmation.
+                    </p>
+                    <p class="text-white/70 leading-relaxed">
+                        The goal isn't just detection — it's emotional self-awareness. The app pairs a quick, low-friction
+                        mood check with a "how are you really doing" prompt, so the interaction feels closer to a
+                        moment of pause than a data-entry task.
+                    </p>
+                </div>
+
+                <!-- Key Features -->
+                <div class="rounded-2xl p-6 md:p-8" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-list-check text-purple-400 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Key Features</h2>
+                    </div>
+                    <ul class="feature-list space-y-4">
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fa-solid fa-check-circle text-purple-400 mt-0.5"></i>
+                            <span><span class="text-white font-medium">Personalized home screen</span> — Time-aware greeting ("Good morning") with a "How are you today?" prompt</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fa-solid fa-check-circle text-purple-400 mt-0.5"></i>
+                            <span><span class="text-white font-medium">Camera-based mood check</span> — Live facial expression analysis through a custom-shaped capture UI</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fa-solid fa-check-circle text-purple-400 mt-0.5"></i>
+                            <span><span class="text-white font-medium">Mood result card</span> — Bottom sheet showing detected mood (Happy / Neutral / Tired, etc.) with a smile-confidence percentage</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fa-solid fa-check-circle text-purple-400 mt-0.5"></i>
+                            <span><span class="text-white font-medium">Reflection step</span> — "My mind right now" prompt after saving, in place of a plain confirmation toast</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fa-solid fa-check-circle text-purple-400 mt-0.5"></i>
+                            <span><span class="text-white font-medium">Mood-aware suggestions</span> — Activity recommendations tailored to the detected emotional state</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Reflection Flow -->
+                <div class="rounded-2xl p-6 md:p-8" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-pen-to-square text-purple-400 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Designing the Save Flow</h2>
+                    </div>
+                    <p class="text-white/70 text-sm mb-6">A small change with an outsized effect on how the app feels to use.</p>
+                    <div class="grid sm:grid-cols-2 gap-4 mb-6">
+                        <div class="p-4 rounded-xl" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <span class="status-pill status-planned inline-block mb-3">Before</span>
+                            <h4 class="font-semibold text-white mb-1">Generic confirmation</h4>
+                            <p class="text-white/50 text-sm">"Mood Saved! Your mood has been successfully recorded." — closes the loop, but asks nothing of the user.</p>
+                        </div>
+                        <div class="p-4 rounded-xl" style="background: rgba(127, 82, 255, 0.08); border: 1px solid rgba(127, 82, 255, 0.25);">
+                            <span class="status-pill status-progress inline-block mb-3">After</span>
+                            <h4 class="font-semibold text-white mb-1">"My mind right now"</h4>
+                            <p class="text-white/50 text-sm">A short, optional reflection prompt before "Done" — turning a save action into a moment of awareness.</p>
+                        </div>
+                    </div>
+                    <div class="design-note rounded-xl p-4">
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            <i class="fa-solid fa-lightbulb text-purple-400 mr-2"></i>
+                            <span class="text-white font-medium">Design note:</span> the original toast technically worked, but it treated
+                            mood-logging as a data event. Replacing it with a short reflective prompt keeps the same number of taps
+                            while making the moment mean something to the user.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mind Reader Exploration -->
+                <div class="explore-card rounded-2xl p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-flask text-purple-400 text-xl"></i>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <h2 class="text-2xl font-bold text-white">Exploration: "Mind Reader"</h2>
+                            <span class="status-pill status-planned">Concept / R&D</span>
+                        </div>
+                    </div>
+                    <p class="text-white/70 leading-relaxed mb-4">
+                        Alongside the camera-based flow, I prototyped a more experimental direction for Mood Mate: a
+                        question-driven "Mind Reader" mode that infers mood through a short flow of questions rather
+                        than the camera alone.
+                    </p>
+                    <p class="text-white/70 leading-relaxed mb-4">
+                        It explores a Bangladesh-specific name database for lightweight personalization, a candidate-scoring
+                        system to weigh possible mood outcomes, and a set of dedicated Kotlin <code class="text-purple-300">ViewModel</code>
+                        and scoring-algorithm classes to keep the logic testable and separate from the UI.
+                    </p>
+                    <p class="text-white/50 text-sm">
+                        Still an early exploration rather than a shipped feature — kept here because it shaped how the
+                        main detection flow and its scoring logic were eventually structured.
+                    </p>
+                </div>
+
+                <!-- Roadmap -->
+                <div class="rounded-2xl p-6 md:p-8" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-road text-purple-400 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Roadmap</h2>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl transition-all hover:translate-x-1" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div class="flex items-center justify-between mb-1">
+                                <h4 class="font-semibold text-white">Journal / Mood History</h4>
+                                <span class="status-pill status-planned">Planned</span>
+                            </div>
+                            <p class="text-white/50 text-sm">A log of past mood checks and reflections</p>
+                        </div>
+                        <div class="p-4 rounded-xl transition-all hover:translate-x-1" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div class="flex items-center justify-between mb-1">
+                                <h4 class="font-semibold text-white">Analytics</h4>
+                                <span class="status-pill status-planned">Planned</span>
+                            </div>
+                            <p class="text-white/50 text-sm">Mood patterns and trends over time</p>
+                        </div>
+                        <div class="p-4 rounded-xl transition-all hover:translate-x-1" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div class="flex items-center justify-between mb-1">
+                                <h4 class="font-semibold text-white">Settings</h4>
+                                <span class="status-pill status-planned">Planned</span>
+                            </div>
+                            <p class="text-white/50 text-sm">Preferences, reminders, and privacy controls</p>
+                        </div>
+                        <div class="p-4 rounded-xl transition-all hover:translate-x-1" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div class="flex items-center justify-between mb-1">
+                                <h4 class="font-semibold text-white">Brand identity</h4>
+                                <span class="status-pill status-planned">Planned</span>
+                            </div>
+                            <p class="text-white/50 text-sm">A dedicated Mood Mate logo and minimal visual system</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Sidebar -->
+            <div class="space-y-6">
+                <!-- Tech Stack Card -->
+                <div class="rounded-2xl p-6" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-layer-group text-purple-400 text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Tech Stack</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            <i class="devicon-kotlin-plain mr-1"></i> Kotlin
+                        </span>
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            <i class="devicon-jetpackcompose-plain mr-1"></i> Jetpack Compose
+                        </span>
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            <i class="fa-solid fa-camera mr-1"></i> CameraX
+                        </span>
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            <i class="fa-solid fa-eye mr-1"></i> ML Kit Face Detection
+                        </span>
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            <i class="fa-solid fa-database mr-1"></i> Room DB
+                        </span>
+                        <span class="tech-tag px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300" style="background: rgba(127, 82, 255, 0.15); color: #a78bfa; border: 1px solid rgba(127, 82, 255, 0.3);">
+                            MVVM
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Quick Info Card -->
+                <div class="rounded-2xl p-6" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-clock text-purple-400 text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Project Info</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center py-2 border-b border-white/10">
+                            <span class="text-white/50">Category</span>
+                            <span class="text-white">Wellness / Mental Health</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-white/10">
+                            <span class="text-white/50">Platform</span>
+                            <span class="text-white">Android</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-white/10">
+                            <span class="text-white/50">Year</span>
+                            <span class="text-white">2026</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-white/10">
+                            <span class="text-white/50">Database</span>
+                            <span class="text-white">Room (SQLite)</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span class="text-white/50">Status</span>
+                            <span class="text-amber-400">In Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="rounded-2xl p-6" style="background: rgba(25, 20, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(127, 82, 255, 0.2);">
+                    <a href="#" class="btn-primary w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 mb-3">
+                        <i class="fa-brands fa-github"></i> View on GitHub
+                    </a>
+                    <a href="index.html" class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Projects Section -->
+        <div class="mt-16">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-white">Explore More Projects</h3>
+                <p class="text-white/50 mt-2">Check out my other work</p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <a href="exam-taker.html" class="group rounded-xl p-5 transition-all duration-300 hover:-translate-y-1" style="background: rgba(25, 20, 45, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(127, 82, 255, 0.15);">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition">
+                            <i class="fa-solid fa-graduation-cap text-purple-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white group-hover:text-purple-400 transition">Exam Taker Ecosystem</h4>
+                            <p class="text-white/40 text-sm">Firebase • Jetpack Compose • MVVM</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-white/30 ml-auto group-hover:translate-x-1 group-hover:text-purple-400 transition"></i>
+                    </div>
+                </a>
+                <a href="cleaners-app.html" class="group rounded-xl p-5 transition-all duration-300 hover:-translate-y-1" style="background: rgba(25, 20, 45, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(127, 82, 255, 0.15);">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition">
+                            <i class="fa-solid fa-broom text-purple-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white group-hover:text-purple-400 transition">Cleaners App</h4>
+                            <p class="text-white/40 text-sm">Supabase • Firebase Auth • Kotlin</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-white/30 ml-auto group-hover:translate-x-1 group-hover:text-purple-400 transition"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t text-center text-white/40 text-sm mt-12" style="background: #0a0a0a; border-color: rgba(127, 82, 255, 0.1);">
+        <p>&copy; 2026 Nazmul Alam. All rights reserved. | Built with <i class="fa-solid fa-heart text-purple-500"></i> for Android</p>
+    </footer>
+
+    <script>
+        // Tech tag hover
+        document.querySelectorAll('.tech-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.background = '#7F52FF';
+                this.style.color = 'white';
+            });
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.background = 'rgba(127, 82, 255, 0.15)';
+                this.style.color = '#a78bfa';
+            });
+        });
+
+        // Smooth page transition for internal navigation
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.href && this.href.includes(window.location.origin) && !this.href.includes('#') && this.target !== '_blank') {
+                    e.preventDefault();
+                    document.body.style.opacity = '0';
+                    document.body.style.transition = 'opacity 0.3s ease';
+                    setTimeout(() => {
+                        window.location.href = this.href;
+                    }, 300);
+                }
+            });
+        });
+
+        // Fade in on load
+        document.body.style.opacity = '0';
+        setTimeout(() => {
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '1';
+        }, 100);
+    </script>
+</body>
+</html>
